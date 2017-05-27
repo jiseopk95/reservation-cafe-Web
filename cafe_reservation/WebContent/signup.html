@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maxium-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+   <link rel="stylesheet" type="text/css" href="DB.css">
+   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+   
+
+  
+</head>
+<body>
+
+<center>
+<div class="w3-top" >
+  <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2" >
+    <li>
+      <a href="index.html" class="w3-margin-left w3-size"><b>SMILE</b> HOUSE</a>
+         </li>
+
+
+
+  </ul>
+</div>
+
+<header class="w3-display-container w3-content w3-wide" style="max-width:100%;" id="home">
+  <img class="w3-image" src="images/coffee.jpg"  width=50%;>
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge"><span class="w3-border w3-border-black w3-padding" >BR</span> <span class="w3-hide-small">Smile House</span></h1>
+</header>
+
+
+<div id="mobileselect-section2" style= "margin:5%">
+<center>
+<h2>회원가입</h2>
+<form onsubmit="return writeCheck()" method="post" name = "form" action="signup.jsp"  >
+<table cellspacing="5">
+<hr>
+<br>
+<tr>
+	<td>이름</td>
+	<td ><input type="text" name="name" style= "width:100%" required='required'></td>
+	<td></td>
+</tr>
+<tr>
+<td>아이디</td>
+	<td><input type="text" name="id" id="id" style= "width:100%" required='required'></td>
+	<td><input type="button" name="check" value="중복체크" style= "width:100%" onClick="idcheck();"></td>
+</tr>
+<tr>
+<td>패스워드</td>
+	<td><input type="password" name="password" id="user_pass" style= "width:100%" required='required'></td>
+	<td></td>
+</tr>
+<tr>
+	<td>패스워드 (확인)</td>
+	<td><input type="password" name="ps2" id="chpass" style= "width:100%" required='required'></td>
+	<td><font name="check" size="2" color="red"></font></td>
+	
+</tr>
+<tr>
+	<td>연락처</td>
+	<td><input type="text" name="pnum" id="pnum" onkeyup="autoHypenPhone(str);" style= "width:100%" maxlength="13" required='required'></td>
+	<td></td>
+</tr>
+<tr>
+	<td colspan=3 align="center">
+	<br>
+		<input type="submit" value="확인" >
+		<input type="reset" value="취소">
+	</td>
+	<td></td>
+</tr>
+</table>
+</form>
+</div>
+<div id="footer-area"><img src="images/footer.PNG"></div>
+
+</center>
+<script>
+
+
+ $(function(){
+  $('#user_pass').keyup(function(){
+   $('font[name=check]').text('');
+  }); //#user_pass.keyup
+
+  $('#chpass').keyup(function(){
+   if($('#user_pass').val()!=$('#chpass').val()){
+    $('font[name=check]').text('');
+    $('font[name=check]').html("암호틀림");
+   }else{
+    $('font[name=check]').text('');
+    $('font[name=check]').html("암호맞음");
+   }
+  }); //#chpass.keyup
+ });
+
+
+
+
+
+
+
+
+function idcheck(){
+	
+	
+var id = document.form.id.value;
+	
+	if(id=="")
+		alert("입력된 아이디가 없습니다");
+	else window.open("idCheck.jsp?id="+id,"","width=400 height=150");
+	
+	
+}
+
+
+
+
+
+
+function writeCheck()
+{
+	if(document.form.name.value=="" || document.form.name.value==null)
+		{
+		alert("이름을 입력하세요");
+		focus.name;
+		return false;
+		}
+	else if(document.form.id.value=="" || document.form.id.value==null)
+	{
+		alert("아이디를 입력하세요");
+		focus.id;
+		return false;
+		}
+	else if(document.form.password.value=="" || document.form.password.value==null)
+	{
+		alert("비밀번호를 입력하세요");
+		focus.password;
+		return false;
+	}
+
+	else if(document.form.pnum.value=="" || document.form.pnum.value==null)
+	{
+		alert("전화번호를 입력하세요");
+		focus.pnum;
+		return false;
+		}
+	else if(document.form.appoint.value=="" || document.form.appoint.value==null)
+	{
+		alert("만날 장소를 입력하세요");
+		focus.appoint;
+		return false;
+		}
+	else document.form.submit();
+	
+	
+ 
+
+ 
+}
+ 
+
+</script>
+</body>
+</html>
